@@ -1,7 +1,9 @@
 package com.myfirst.trialproj;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class App {
@@ -11,14 +13,15 @@ public class App {
 
 		int value = 12;
 
-		System.out.println("native" + nativemethod(array, value));
-		nativemethodmultipleans(array, value);
-		sortmethod(array, value);
-		usingSets(array,value);
-
+//		System.out.println("native" + nativemethod(array, value));
+//		nativemethodmultipleans(array, value);
+//		sortmethod(array, value);
+//		usingSets(array,value);
+		int[] a= givingPositionstoo(array,value);
+		System.out.println("["+a[0] +", "+a[1]+"]");
 	}
 
-	
+
 
 	// GIVES ONLY ONE RESULT SO NOT SUITABLE IF THERE ARE MANY ANSWERS //BRUTE FORCE
 	private static String nativemethod(int[] array, int value) {
@@ -88,6 +91,8 @@ public class App {
 		
 		Set<Integer> s= new HashSet<Integer>();
 		
+		int count= 0;
+		
 		for(int i=0;i<array.length;i++) {
 			int item=value-array[i];
 			
@@ -99,4 +104,24 @@ public class App {
 		
 	}
 	
+	//USING HASHMAP TO GIVE POSITION TOO
+	
+
+	private static int[] givingPositionstoo(int[] array, int value) {
+	
+		Map<Integer, Integer> mp=new HashMap<Integer,Integer>();
+		
+		for(int i=0;i<array.length;i++) {
+			
+			int item=value-array[i];
+			
+			if(mp.containsKey(item)) {
+				return new int[] {mp.get(item),i} ;
+			}
+			
+			mp.put(array[i], i);	
+	
+	}
+		throw new IllegalArgumentException("No two sum solution");
+}
 }

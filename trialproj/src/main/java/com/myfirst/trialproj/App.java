@@ -1,6 +1,8 @@
 package com.myfirst.trialproj;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class App {
 	
@@ -12,8 +14,11 @@ public class App {
 		System.out.println("native" + nativemethod(array, value));
 		nativemethodmultipleans(array, value);
 		sortmethod(array, value);
+		usingSets(array,value);
 
 	}
+
+	
 
 	// GIVES ONLY ONE RESULT SO NOT SUITABLE IF THERE ARE MANY ANSWERS //BRUTE FORCE
 	private static String nativemethod(int[] array, int value) {
@@ -75,4 +80,23 @@ public class App {
 		}
 
 	}
+	
+	
+	//BETTER WAY USING SETS
+
+	private static void usingSets(int[] array, int value) {
+		
+		Set<Integer> s= new HashSet<Integer>();
+		
+		for(int i=0;i<array.length;i++) {
+			int item=value-array[i];
+			
+			if(s.contains(item)) {
+				System.out.println("i ="+ array[i] + " j="+(item ));
+			}
+			s.add(array[i]);
+		}
+		
+	}
+	
 }
